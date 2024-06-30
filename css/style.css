@@ -1,3 +1,4 @@
+/* GENERAL */
 *{
     padding: 0;
     margin: 0;
@@ -31,4 +32,18 @@ body {
     border: 0.4em solid #090029;
     border-radius: 50%;
     cursor: pointer;
+}
+
+/* JUEGO */
+.juego-container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 31em;
+    padding: 3em 1.5em;
+    border: 0.6em solid #090029;
+    border-radius: 0.5em;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
 }
