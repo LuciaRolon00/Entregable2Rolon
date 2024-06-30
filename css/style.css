@@ -15,13 +15,6 @@ body {
     );
 }
 
-.puntos-container{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-}
-
 /* BOTÓN DE START */
 #start {
     font-family: 'Pokemon Solid', sans-serif;
@@ -46,4 +39,13 @@ body {
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
+}
+.puntos-container{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+.hide {
+    display: none;
 }
