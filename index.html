@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Title -->
+    <title>PokéQuiz</title>
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet">
     <!-- JS -->
     <script defer src="./js/main.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css">
-    <!-- Title -->
-    <title>PokéQuiz</title>
+    <!-- Ícono -->
+    <link rel="icon" type="image/x-icon" href="./img/pokeball icon.png">
 </head>
 <body>
-    
+    <div class="juego-container hide">
+        <div class="header">
+          <div class="tiempo"></div>
+        </div>
+        <div class="container"></div>
+      </div>
+      <div class="puntos-container">
+        <div id="puntos-usuario"></div>
+        <button id="start">START</button>
+      </div>
 </body>
 </html>

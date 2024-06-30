@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(
+        #da2e2c 49%,
+        #090829 49%,
+        #090829 51%,
+        #ffffff 51%
+    );
+}
+
+.puntos-container{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+/* BOTÓN DE START */
+#start {
+    font-family: 'Pokemon Solid', sans-serif;
+    background-color: #ffffff;
+    height: 6em;
+    width: 6em;
+    font-size: 1.8em;
+    border: 0.4em solid #090029;
+    border-radius: 50%;
+    cursor: pointer;
+}
