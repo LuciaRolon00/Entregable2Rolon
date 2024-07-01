@@ -1,14 +1,14 @@
-// PREGUNTAS 
+// PREGUNTAS e IMAGENES
 const preguntas = [
-    {
-        image: "eevee.png",
-        opcionCorrecta: "Eevee"
-    },
+  {
+    image: "eevee.png",
+    opcionCorrecta: "Eevee"
+  },
 ];
 
 // OPCIONES 
 const opcionesArray = [
-    "Alakazam", "Arcanine", "Bulbasaur", "Cubone", "Ditto", "Gloom", "Gyarados", "Hitmonlee", "Horsea", "Koffing", "Mewtwo", "Pikachu", "Seaking", "Tauros", "Venonat", "Victreebe", "Eevee", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Ekans", "Arbok",
+  "Alakazam", "Arcanine", "Bulbasaur", "Cubone", "Ditto", "Gloom", "Gyarados", "Hitmonlee", "Horsea", "Koffing", "Mewtwo", "Pikachu", "Seaking", "Tauros", "Venonat", "Victreebe", "Eevee", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Ekans", "Arbok", "Magikarp",
 ]
 
 // Selección de elementos del DOM
@@ -21,7 +21,7 @@ const puntosUsuario = document.getElementById(".puntos-usuario");
 // Declaración de variables 
 let botonSgte;
 let puntos, preguntaActual, preguntasFinal;
-let temporizador = document.getElementsByClassName("timer")[0];
+let timer = document.getElementsByClassName("timer")[0];
 let cuentaRegresiva, cuenta = 11;
 
 // Opciones aleatorias del array
@@ -39,11 +39,11 @@ const iniciarJuego = () => {
   generadorTarjeta(preguntasFinal[preguntaActual]);
 };
 
-// TEMPORIZADOR
-const mostrarTemporizador = () => {
+// TIMER
+const mostrarTiempo = () => {
   cuentaRegresiva = setInterval(() => {
     cuenta -= 1;
-    temporizador.innerHTML = `<span>Tiempo restante: </span>${cuenta}s`;
+    timer.innerHTML = `<span>Tiempo restante: </span>${cuenta}s`;
     if (cuenta == 0) {
       clearInterval(cuentaRegresiva);
       siguientePregunta();
@@ -134,14 +134,10 @@ const generadorTarjeta = (objetoTarjeta) => {
   </div>
   
   <div class="opciones">
-    <button class="opcion" onclick="comprobar(event)">${opciones[0]}
-    </button>
-    <button class="opcion" onclick="comprobar(event)">${opciones[1]}
-    </button>
-    <button class="opcion" onclick="comprobar(event)">${opciones[2]}
-    </button>
-    <button class="opcion" onclick="comprobar(event)">${opciones[3]}
-    </button>
+    <button class="opcion" onclick="comprobar(event)">${opciones[0]}</button>
+    <button class="opcion" onclick="comprobar(event)">${opciones[1]}</button>
+    <button class="opcion" onclick="comprobar(event)">${opciones[2]}</button>
+    <button class="opcion" onclick="comprobar(event)">${opciones[3]}</button>
   </div>
  
   <div class="div-btn-sgte">
