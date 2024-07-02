@@ -159,6 +159,17 @@ let cuentaRegresiva, contar = 11;
 const generadorValorAleatorio = (array) => array[Math.floor(Math.random() * array.length)];
 const mezclaAleatoria = (array) => array.sort(() => 0.5 - Math.random());
 
+// Función para guardar puntos en localStorage
+const guardarPuntosEnLS = (puntos) => {
+  localStorage.setItem('puntosUsuario', puntos.toString());
+};
+
+// Función para obtener puntos desde localStorage
+const obtenerPuntosDesdeLS = () => {
+  const puntosGuardados = localStorage.getItem('puntosUsuario');
+  return puntosGuardados ? parseInt(puntosGuardados) : 0;
+};
+
 // Función de orden superior para temporizador
 const crearTimer = (duracion, onTiempoTerminado) => {
   let contador = duracion;
@@ -201,6 +212,20 @@ const iniciarJuego = () => {
   preguntaActual = 0;
   // Que salga la primera pregunta
   genTarjeta(preguntasFinal[preguntaActual]);
+
+  // Recuperar puntos del localStorage
+  puntos = obtenerPuntosDesdeLS();
+  preguntasFinal = llenarPreguntas();
+  preguntaActual = 0;
+
+  // Mostrar la primera pregunta
+  genTarjeta(preguntasFinal[preguntaActual]);
+};
+
+// Guardar puntos
+const guardarPuntos = () => {
+  guardarPuntosEnLS(puntos);
+  puntosUsuario.innerHTML = `Tus puntos son ${puntos} de ${preguntaActual}`;
 };
 
 // Preguntas Aleatorias
@@ -242,6 +267,8 @@ const comprobar = (e) => {
   opciones.forEach((element) => {
     element.disabled = true;
   });
+
+  guardarPuntos();
 };
 
 // Siguiente pregunta
@@ -256,6 +283,8 @@ const siguientePregunta = (e) => {
   } else {
     genTarjeta(preguntasFinal[preguntaActual]);
   }
+
+  guardarPuntos();
 };
 
 // Función de orden superior para crear tarjetas de preguntas
