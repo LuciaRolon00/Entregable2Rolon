@@ -57,11 +57,11 @@ const preguntas = [
     opcion_correcta: "Venonat",
   },
   {
-    image: "Victreebe.jpg",
-    opcion_correcta: "Victreebe",
+    image: "Victreebel.jpg",
+    opcion_correcta: "Victreebel",
   },
   {
-    image: "Eevee.png",
+    image: "eevee.png",
     opcion_correcta: "Eevee",
   },
 ];
@@ -121,12 +121,44 @@ const puntosUsuario = document.getElementById("puntos-usuario");
 let timer = document.getElementsByClassName("timer")[0];
 let botonSgte;
 let puntos, preguntaActual, preguntasFinal;
-let cuentaRegresiva,
-  contar = 11;
+let cuentaRegresiva, contar = 11;
 
 // Opciones aleatorias del array
 const generadorValorAleatorio = (array) => array[Math.floor(Math.random() * array.length)];
 const mezclaAleatoria = (array) => array.sort(() => 0.5 - Math.random());
+
+// Función de orden superior para temporizador
+const crearTimer = (duracion, onTiempoTerminado) => {
+  let contador = duracion;
+  cuentaRegresiva = setInterval(() => {
+    contador -= 1;
+    timer.innerHTML = `<span>Tiempo: </span>${contador}s`;
+    if (contador == 0) {
+      clearInterval(cuentaRegresiva);
+      onTiempoTerminado();
+    }
+  }, 1000);
+};
+
+const mostrarTimer = () => {
+  crearTimer(11, siguientePregunta);
+};
+
+// Función de orden superior para llenar opciones
+const llenarOpcionesConFiltro = (opcion_correcta, filtro) => {
+  let arr = [opcion_correcta];
+  while (arr.length < 4) {
+    let valorAleatorio = generadorValorAleatorio(opcionesArray);
+    if (!arr.includes(valorAleatorio) && filtro(valorAleatorio)) {
+      arr.push(valorAleatorio);
+    }
+  }
+  return arr;
+};
+
+const llenarOpciones = (opcion_correcta) => {
+  return llenarOpcionesConFiltro(opcion_correcta, () => true);
+};
 
 // Empezar juego
 const iniciarJuego = () => {
@@ -139,33 +171,6 @@ const iniciarJuego = () => {
   genTarjeta(preguntasFinal[preguntaActual]);
 };
 
-// TIMER
-const mostrarTimer = () => {
-  cuentaRegresiva = setInterval(() => {
-    contar -= 1;
-    timer.innerHTML = `<span>Tiempo: </span>${contar}s`;
-    if (contar == 0) {
-      clearInterval(cuentaRegresiva);
-      siguientePregunta();
-    }
-  }, 1000);
-};
-
-// Crear opciones
-const llenarOpciones = (opcion_correcta) => {
-  let arr = [];
-  arr.push(opcion_correcta);
-  let cuentaOpciones = 1;
-  while (cuentaOpciones < 4) {
-    let valoraleatorio = generadorValorAleatorio(opcionesArray);
-    if (!arr.includes(valoraleatorio)) {
-      arr.push(valoraleatorio);
-      cuentaOpciones += 1;
-    }
-  }
-  return arr;
-};
-
 // Preguntas Aleatorias
 const llenarPreguntas = () => {
   let preguntasCuenta = 0;
@@ -173,10 +178,10 @@ const llenarPreguntas = () => {
   let lotePreguntas = [];
   //5 preguntas
   while (preguntasCuenta < 5) {
-    let valoraleatorio = generadorValorAleatorio(preguntas);
-    let index = preguntas.indexOf(valoraleatorio);
+    let valorAleatorio = generadorValorAleatorio(preguntas);
+    let index = preguntas.indexOf(valorAleatorio);
     if (!objetosElegidos.includes(index)) {
-      lotePreguntas.push(valoraleatorio);
+      lotePreguntas.push(valorAleatorio);
       objetosElegidos.push(index);
       preguntasCuenta += 1;
     }
@@ -214,46 +219,40 @@ const siguientePregunta = (e) => {
     juegoContainer.classList.add("hide");
     puntosContainer.classList.remove("hide");
     startButton.innerText = `RESTART`;
-    puntosUsuario.innerHTML =
-      "Tus puntos son " + puntos + " de " + preguntaActual;
+    puntosUsuario.innerHTML = "Tus puntos son " + puntos + " de " + preguntaActual;
     clearInterval(cuentaRegresiva);
   } else {
     genTarjeta(preguntasFinal[preguntaActual]);
   }
 };
 
-// TARJETA
-const genTarjeta = (objetoTarjeta) => {
+// Función de orden superior para crear tarjetas de preguntas
+const crearTarjeta = (objetoTarjeta, generarOpciones) => {
   const { image, opcion_correcta } = objetoTarjeta;
-  let opciones = mezclaAleatoria(llenarOpciones(opcion_correcta));
+  let opciones = mezclaAleatoria(generarOpciones(opcion_correcta));
   container.innerHTML = `<div class="quiz">
-    <p class="num">
-    ${preguntaActual + 1}/5
-    </p>
+    <p class="num">${preguntaActual + 1}/5</p>
     <div class="preguntas">
       <img class="pokemon-image" src="${image}"/>
     </div>
-      <div class="opciones">
-      <button class="opcion" onclick="comprobar(event)">${opciones[0]}
-      </button>
-      <button class="opcion" onclick="comprobar(event)">${opciones[1]}
-      </button>
-      <button class="opcion" onclick="comprobar(event)">${opciones[2]}
-      </button>
-      <button class="opcion" onclick="comprobar(event)">${opciones[3]}
-      </button>
-      </div>
-  
-      <div class="div-btn-sgte">
-          <button class="botonSgte" onclick="siguientePregunta(event)">Next</button>
-      </div>
-  
-    </div>`;
-  
+    <div class="opciones">
+      <button class="opcion" onclick="comprobar(event)">${opciones[0]}</button>
+      <button class="opcion" onclick="comprobar(event)">${opciones[1]}</button>
+      <button class="opcion" onclick="comprobar(event)">${opciones[2]}</button>
+      <button class="opcion" onclick="comprobar(event)">${opciones[3]}</button>
+    </div>
+    <div class="div-btn-sgte">
+      <button class="botonSgte" onclick="siguientePregunta(event)">Next</button>
+    </div>
+  </div>`;
+
   contar = 11;
   clearInterval(cuentaRegresiva);
-  
   mostrarTimer();
+};
+
+const genTarjeta = (objetoTarjeta) => {
+  crearTarjeta(objetoTarjeta, llenarOpciones);
 };
 
 startButton.addEventListener("click", iniciarJuego);
