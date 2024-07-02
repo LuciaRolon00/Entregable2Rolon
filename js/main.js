@@ -1,68 +1,100 @@
 // PREGUNTAS e IMAGENES
 const preguntas = [
   {
-    image: "Alakazam.jpg",
+    image: "img/alakazam.jpg",
     opcion_correcta: "Alakazam",
   },
   {
-    image: "Arcanine.jpg",
+    image: "img/arcanine.jpg",
     opcion_correcta: "Arcanine",
   },
   {
-    image: "Bulbasaur.jpg",
+    image: "img/bulbasaur.jpg",
     opcion_correcta: "Bulbasaur",
   },
   {
-    image: "Cubone.jpg",
+    image: "img/cubone.jpg",
     opcion_correcta: "Cubone",
   },
   {
-    image: "Ditto.jpg",
+    image: "img/ditto.jpg",
     opcion_correcta: "Ditto",
   },
   {
-    image: "Gloom.jpg",
+    image: "img/gloom.png",
     opcion_correcta: "Gloom",
   },
   {
-    image: "Gyarados.jpg",
+    image: "img/gyarados.png",
     opcion_correcta: "Gyarados",
   },
   {
-    image: "Hitmonlee.jpg",
+    image: "img/hitmonlee.jpg",
     opcion_correcta: "Hitmonlee",
   },
   {
-    image: "Horsea.jpg",
+    image: "img/horsea.jpg",
     opcion_correcta: "Horsea",
   },
   {
-    image: "Koffing.jpg",
+    image: "img/koffing.jpg",
     opcion_correcta: "Koffing",
   },
   {
-    image: "Mewtwo.jpg",
+    image: "img/mewtwo.png",
     opcion_correcta: "Mewtwo",
   },
   {
-    image: "Seaking.jpg",
+    image: "img/pikachu.jpg",
+    opcion_correcta: "Pikachu",
+  },
+  {
+    image: "img/seaking.jpg",
     opcion_correcta: "Seaking",
   },
   {
-    image: "Tauros.jpg",
+    image: "img/tauros.jpg",
     opcion_correcta: "Tauros",
   },
   {
-    image: "Venonat.jpg",
+    image: "img/venonat.jpg",
     opcion_correcta: "Venonat",
   },
   {
-    image: "Victreebel.jpg",
+    image: "img/victreebel.jpg",
     opcion_correcta: "Victreebel",
   },
   {
-    image: "eevee.png",
+    image: "img/eevee.png",
     opcion_correcta: "Eevee",
+  },
+  {
+    image: "img/mewtwo.png",
+    opcion_correcta: "Charmander",
+  },
+  {
+    image: "img/charizard.jpg",
+    opcion_correcta: "Charizard",
+  },
+  {
+    image: "img/butterfree.png",
+    opcion_correcta: "Butterfree",
+  },
+  {
+    image: "img/metapod.jpg",
+    opcion_correcta: "Metapod",
+  },
+  {
+    image: "img/caterpie.png",
+    opcion_correcta: "Caterpie",
+  },
+  {
+    image: "img/weedle.jpg",
+    opcion_correcta: "Weedle",
+  },
+  {
+    image: "img/squirtle.png",
+    opcion_correcta: "Squirtle",
   },
 ];
 
@@ -83,8 +115,8 @@ const opcionesArray = [
   "Seaking",
   "Tauros",
   "Venonat",
-  "Victreebe",
-  "eevee",
+  "Victreebel",
+  "Eevee",
   "Ivysaur",
   "Venusaur",
   "Charmander",
